@@ -67,6 +67,43 @@ console.log(getFree(true));
 
 
 //==========using functions===========//
+//js is different than other languages. function parameters are more so guidelines.
+//lets consider the following
+
+function add1(x, y){
+    return x+y;
+}
+
+//the above method returns the sum.
+console.log("demonstrating the difference between add(1,2) and add(1,2,3) for add(x,y)");
+console.log(add1(1,2));
+console.log(add1(1,2,3));
+console.log('thyer the same');
+
+function add2(){
+    var sum = 0;
+    for(var i=0, j = arguments.length; i<j; i++){
+        sum+=arguments[i];
+    }
+    return sum;
+}
+
+console.log("here is a function definition with no function parameters")
+console.log(add2(1,2,3,4,5))
+
+
+//demonstrating rest parameter syntax. this kinda seems like the equivalent to *args in python
+function average(...arrayNums){
+    var sum = 0;
+    for(let digit of arrayNums){
+        sum += digit;
+    }
+    return sum/arrayNums.length;
+}
+
+console.log(average(2,3,4,5))
+
+//note FUNCTIONS ARE OBJECTS AS WELL
 
 
 //==========objects============//
@@ -102,5 +139,25 @@ console.log("obj2 example: ", name);
 console.log("nested JSON object example: ", nestedPortion);
 
 console.log("Object creation example, ", thisPerson.name);
+
+
+//array objects are the same as typical arrays
+//here is an array example
+var ar = new Array()
+ar[0] = 'arm';
+ar[1] = 'leg';
+ar[2] = 'hand';
+
+//.length is a common object property
+ar.length; //3
+
+//arrays can be initialized the same way as python arrays
+var ar2 = ['leg', 'arm', 'feet'];
+
+//the append equivalent is .push
+ar2.push('chest');
+
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript gives a good outline of array properties
+
 
 
