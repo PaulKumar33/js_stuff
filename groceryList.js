@@ -71,6 +71,20 @@ function ParseMainArray(arrayName){
     }
 }
 
+function CalculateTimeRemaining(starDate, endDate){
+    //note these parameters should be objects
+    if(starDate.year > endDate.year){
+        console.log("Input error for endDate");
+        return -1;
+    }
+    var yearDif = endDate.year - starDate.year;
+    var monthDif = endDate.month - starDate.month;
+    var dayDif = endDate.day - starDate.day;
+
+    var finalDays = yearDif*365+monthDif*31+dayDif;
+    return finalDays;
+}
+
 function DateConstructor(datePosition){
     /*
     if datePosition == 0 -> get the current date
@@ -79,8 +93,11 @@ function DateConstructor(datePosition){
     */
    if(datePosition == 0){
        var todaysDate = new Date();
-       var returnDate = todaysDate.getFullYear()+"/"+todaysDate.getMonth()+"/"+todaysDate.getDay()
-       return todaysDate.getFullYear(), todaysDate.getMonth(), todaysDate.getDay();
+
+        var year = todaysDate.getFullYear();
+        var month = todaysDate.getMonth();
+        var day = todaysDate.getDate();
+       return [year, month, day];
    }
 }
 
@@ -127,18 +144,10 @@ function DisplayAllElements(){
 }
 
 //main block
-var year_, month_, day_ = DateConstructor(1);
-var testObject = new ProduceObject("carrot",
-2, {year: year_, month: month_, day:day_}, {year: year_, month: month_, day:day_});
-var testObject2 = new ProduceObject("brocoli",
-1, {year: year_, month: month_, day:day_}, {year: year_, month: month_, day:day_})
-console.log(testObject);
-PopulateMainArray(testObject);
-PopulateMainArray(testObject2);
-console.log("this is a test")
-console.log(groceryArray[1].name);
-ParseMainArray('carrot');
+var date = DateConstructor(0);
+var timeObject = {year: date[0], month: date[1]+1, day:date[2]};
 
-DisplayAllElements();
+console.log(CalculateTimeRemaining(timeObject, {year:2019, month:6, day:12}));
+
 
 
