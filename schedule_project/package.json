@@ -1,0 +1,11 @@
+{
+  "name": "schedule_project",
+  "version": "1.0.0",
+  "description": "schedule project to get better at js, css, html",
+  "main": "app_main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Paul Kumar",
+  "license": "ISC"
+}
